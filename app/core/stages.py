@@ -1,0 +1,9 @@
+from enum import Enum
+
+
+class STAGE(str, Enum):
+    ONBOARDING = "ONBOARDING"
+    DISCOVERY = "DISCOVERY"
+    SHORTLISTING = "SHORTLISTING"
+    LOCKED = "LOCKED"
+    APPLICATION = "APPLICATION"
