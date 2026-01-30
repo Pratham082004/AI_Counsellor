@@ -12,7 +12,6 @@ export interface LoginPayload {
 export interface SignupPayload {
   email: string;
   password: string;
-  full_name?: string;
 }
 
 export interface VerifyOtpPayload {

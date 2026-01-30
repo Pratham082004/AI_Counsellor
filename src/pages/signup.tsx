@@ -9,12 +9,6 @@ import { signup, verifyOtp } from '../services/auth.service';
 import { useApiError } from '../hooks';
 
 // Icon components
-const UserIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-  </svg>
-);
-
 const MailIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -63,7 +57,7 @@ export default function SignupPage() {
 
     try {
       if (step === 'signup') {
-        await signup({ email: data.email, password: data.password, full_name: data.full_name });
+        await signup({ email: data.email, password: data.password });
         setStep('verify');
         setResendCooldown(RESEND_INTERVAL);
       } else {
@@ -93,18 +87,6 @@ export default function SignupPage() {
             {errors.root.message}
           </Alert>
         )}
-
-        <div className="space-y-1">
-          <Input
-            {...register('full_name')}
-            type="text"
-            placeholder="Full name"
-            label="Full Name"
-            error={errors.full_name?.message}
-            disabled={isLoading}
-            icon={<UserIcon />}
-          />
-        </div>
 
         <div className="space-y-1">
           <Input
