@@ -1,17 +1,53 @@
-# AI Counsellor
+# 🎓 AI Counsellor
 
-An AI-powered university admission counselling platform built with React, TypeScript, and FastAPI.
+**AI Counsellor** is a full-stack, AI-powered university admission counselling platform that guides students through the entire study-abroad journey — from profile building to university discovery, shortlisting, and application tracking.
 
-## Features
+Unlike traditional admission portals that rely on static filters and rankings, AI Counsellor follows a **guided, stage-based counselling approach**, helping students make confident and informed decisions based on their academic profile, goals, budget, and readiness.
 
-- **User Authentication** - Login/Signup with OTP verification
-- **Profile Management** - Complete onboarding flow for student profiles
-- **AI University Discovery** - Get personalized university recommendations
-- **Shortlist & Apply** - Track your application journey
-- **AI Counsellor Chat** - 24/7 AI assistance for admission queries
-- **Task Management** - Track application deadlines and tasks
+---
 
-## Tech Stack
+## ✨ Why AI Counsellor?
+
+Students often feel overwhelmed by thousands of universities, unclear eligibility criteria, and scattered deadlines.  
+AI Counsellor solves this by combining **intelligent AI reasoning**, **structured onboarding**, and **task-driven progress tracking** — all in one platform.
+
+---
+
+## 🚀 Key Features
+
+### 🔐 Authentication & Security
+- Secure Login / Signup flow
+- OTP-based verification
+- JWT-based authentication
+
+### 🧑‍🎓 Student Profile & Onboarding
+- Guided onboarding experience
+- Academic background, preferences, and budget capture
+- Profile completeness tracking
+
+### 🤖 AI-Powered University Discovery
+- Personalized university recommendations
+- Budget-aware and profile-aware suggestions
+- AI reasoning instead of static filters
+
+### ⭐ Shortlisting & Applications
+- One-click university shortlisting
+- Application progress tracking
+- Centralized application dashboard
+
+### 💬 AI Counsellor Chat
+- 24/7 AI assistant for admission-related queries
+- Guidance on eligibility, timelines, and next steps
+- Powered by OpenRouter and Gemini AI models
+
+### ✅ Task & Deadline Management
+- Application task tracking
+- Deadline monitoring
+- Progress visibility throughout the admission journey
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
 - React 18 + TypeScript
@@ -26,76 +62,101 @@ An AI-powered university admission counselling platform built with React, TypeSc
 - PostgreSQL + SQLAlchemy
 - JWT Authentication
 - OpenRouter AI Integration
+- Gemini AI (fallback)
 
-## Getting Started
+---
+
+## 📦 Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - Python 3.11+
 - PostgreSQL
 
-### Frontend Setup
+---
+
+### 🔧 Frontend Setup
+
 ```bash
 cd ai-counsellor
 npm install
 npm run dev
 ```
 
-### Backend Setup
+---
+
+### 🔧 Backend Setup
+
 ```bash
 cd app
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-### Environment Variables
+---
 
-Create `.env` file in `/app` directory:
+## 🔐 Environment Variables
+
+Create a `.env` file inside the `/app` directory:
+
 ```env
 DATABASE_URL=postgresql://user:password@localhost:5432/ai_counsellor
 SECRET_KEY=your-secret-key
-OPENROUTER_API_KEY=your-api-key
+OPENROUTER_API_KEY=your-openrouter-key
 GEMINI_API_KEY=your-gemini-key
 ```
 
-## Project Structure
+---
+
+## 🗂️ Project Structure
 
 ```
 ai-counsellor/
-├── app/                    # FastAPI Backend
-│   ├── api/               # API routes
-│   ├── core/              # Core utilities
-│   ├── db/                # Database models & config
-│   ├── models/            # SQLAlchemy models
-│   ├── schemas/           # Pydantic schemas
-│   ├── services/          # Business logic
-│   └── main.py            # Entry point
-├── src/                    # React Frontend
-│   ├── components/        # Reusable components
-│   ├── pages/             # Page components
-│   ├── services/          # API services
-│   ├── hooks/             # Custom React hooks
-│   ├── types/             # TypeScript types
-│   └── utils/             # Utility functions
+├── app/
+│   ├── api/
+│   ├── core/
+│   ├── db/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
+│   └── main.py
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── hooks/
+│   ├── types/
+│   └── utils/
 ├── package.json
 └── requirements.txt
 ```
 
-## API Endpoints
+---
+
+## 🔌 API Overview
 
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /auth/register | Register new user |
-| POST | /auth/login | Login with OTP |
-| POST | /onboarding/complete | Complete user onboarding |
-| GET | /discover | Get AI university recommendations |
-| POST | /shortlist | Add to shortlist |
-| GET | /applications | Get applications |
-| POST | /ai-counsellor | Chat with AI counsellor |
+|------|---------|-------------|
+| POST | /auth/register | Register a new user |
+| POST | /auth/login | Login using OTP |
+| POST | /onboarding/complete | Complete student onboarding |
+| GET  | /discover | AI-based university recommendations |
+| POST | /shortlist | Add university to shortlist |
+| GET  | /applications | Fetch application status |
+| POST | /ai-counsellor | Chat with the AI counsellor |
 
-## License
+---
 
-MIT
+## 🧪 Project Status
 
+- Core functionality implemented
+- Actively evolving with improved AI reasoning
+- Designed for scalability and future enhancements
+
+---
+
+## 📄 License
+
+MIT License
