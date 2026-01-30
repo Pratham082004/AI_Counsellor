@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "type": "module",
   "homepage": "/",
+  "description": "AI-powered university admission counselling platform",
+  "author": "AI Counsellor Team",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "tsc --noEmit",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "type-check": "tsc --noEmit",
-    "test": "vitest",
-    "test:ui": "vitest --ui"
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,md}\"",
+    "clean": "rm -rf dist node_modules/.vite"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -38,10 +40,29 @@
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^1.2.2",
     "autoprefixer": "^10.4.17",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.33",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
+    "terser": "^5.46.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10",
     "vitest": "^1.2.2"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "fastapi",
+    "ai",
+    "university",
+    "admission",
+    "counsellor"
+  ],
+  "license": "MIT"
 }
+
