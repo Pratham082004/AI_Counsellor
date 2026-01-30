@@ -4,12 +4,13 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from app.db.session import engine
 from app.db.base import Base
-from app.models.user import User  # ensure model is imported so metadata is registered
-from app.models.otp import OTP    # ensure OTP table is registered
-from app.models.profile import Profile  # ensure Profile table is registered
+from app.models.user import User
+from app.models.otp import OTP
+from app.models.profile import Profile
 from app.api.api_router import api_router
 from app.core.dependencies import get_current_user
 import uvicorn
+import os
 
 app = FastAPI(
     title="AI Counsellor API",
@@ -17,36 +18,31 @@ app = FastAPI(
 )
 
 # -------------------------
-# Database Tables (Dev)
+# Database Tables (Dev only)
 # -------------------------
-
-# Create tables automatically in development if they don't exist.
-# In production, you should manage schema via migrations instead.
 try:
     Base.metadata.create_all(bind=engine)
 except Exception as e:
     print(f"Database tables might already exist: {e}")
 
 # -------------------------
-# CORS (Frontend Access)
+# CORS Configuration
 # -------------------------
+
+ALLOWED_ORIGINS = [
+    # Local development
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
+
+    # ✅ Vercel frontend (IMPORTANT)
+    "https://ai-counsellor-rarau81-prathams-projects-384c2258.vercel.app",
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:5173",
-        "http://localhost:5173",
-        "http://127.0.0.1:5174",
-        "http://localhost:5174",
-        # Common dev ports (Vite / Create React App / custom)
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-        # Additional ports for development
-        "http://127.0.0.1:61866",
-        "http://localhost:61866",
-        "http://127.0.0.1:55662",
-        "http://localhost:55662",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -87,16 +83,9 @@ app.include_router(api_router)
 # -------------------------
 
 if __name__ == "__main__":
-    """
-    Allows running directly:
-        python app/main.py
-
-    Recommended for development:
-        python -m uvicorn app.main:app --reload
-    """
     uvicorn.run(
         "app.main:app",
-        host="127.0.0.1",
+        host="0.0.0.0",
         port=8000,
         reload=False
     )
